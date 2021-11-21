@@ -1,0 +1,76 @@
+﻿@model IEnumerable<TDV_Carlos.Models.Usuarios>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout Admin.cshtml";
+}
+    
+<br/>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2>
+            Empleados:
+        </h2>
+    </div>
+    <div class="panel-body">
+        <div class="row col-md-12 ">
+            <table class="table table-striped custab">
+                <thead>
+                    <a href="@Url.Action("Create")" class="btn btn-primary btn-xs pull-right"><b>+</b> Agregar nuevo empleado</a>
+                    <tr>
+                        <th>
+                            Nombre:
+                        </th>
+                        <th>
+                            Apellidos:
+                        </th>
+                        <th>
+                            Correo Electrónico:
+                        </th>
+                        <th>
+                            Telefono:
+                        </th>
+                        <th>
+                            Puesto:
+                        </th>
+                        <th>
+                            Estado:
+                        </th>
+                        <th class="text-center">
+                            Aciones:
+                        </th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.apellidos)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.telefono)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.rol)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.estatus)
+                        </td>
+                        <td class="text-center">
+                            <a class='btn btn-success btn-xs' href="@Url.Action( "Details", new { id = item.id_usuario })"><span class="glyphicon glyphicon-eye-close"></span>Detalles</a>
+                            <a class='btn btn-info btn-xs' href="@Url.Action( "Edit", new { id = item.id_usuario })"><span class="glyphicon glyphicon-edit"></span> Actualizar</a>
+                            <a class="btn btn-danger btn-xs" href="@Url.Action("Delete", new { id = item.id_usuario })"><span class="glyphicon glyphicon-remove"></span> Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>        

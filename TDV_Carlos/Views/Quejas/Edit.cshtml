@@ -1,0 +1,175 @@
+﻿@model TDV_Carlos.Models.Comentario
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutChat.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <br />
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h2>Responder</h2>
+            <h4>Queja</h4>
+        </div>
+        <div class="panel-body ">
+            <div class="center-block">
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.id_cometario)
+                    @Html.HiddenFor(model => model.titulo)
+                    @Html.HiddenFor(model => model.descripcion)
+                    @Html.HiddenFor(model => model.fecha)
+                    @Html.HiddenFor(model => model.id_usuario)
+                    @Html.HiddenFor(model => model.id_venta)
+                    @Html.HiddenFor(model => model.estatus)
+
+                    <!--
+                    <div class="form-group" style="padding-left: 7em">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Responder" class="btn btn-primary" />
+                        </div>
+                    </div>
+                    -->
+
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading" id="accordion">
+                                    <span class="glyphicon glyphicon-comment">  @Html.DisplayFor(model => model.titulo)</span> 
+                                    <div class="btn-group pull-right">
+                                        <a type="button" class="btn btn-default btn-xs" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                            <span class="glyphicon glyphicon-chevron-down"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="panel-collapse collapse" id="collapseOne">
+                                    <div class="panel-body">
+                                        <ul class="chat">
+                                            <li class="left clearfix">
+                                                <span class="chat-img pull-left">
+                                                    <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
+                                                </span>
+                                                <div class="chat-body clearfix">
+                                                    <div class="header">
+                                                        <strong class="primary-font">@Html.DisplayFor(model => model.Venta.Usuarios.nombre)  @Html.DisplayFor(model => model.Venta.Usuarios.apellidos)</strong> <small class="pull-right text-muted">
+                                                        <span class="glyphicon glyphicon-time"></span> @Html.DisplayFor(model => model.fecha)
+                                                        </small>
+                                                    </div>
+                                                    <p>
+                                                        @Html.DisplayFor(model => model.descripcion)
+                                                    </p>
+                                                </div>
+                                            </li>
+                                            <li class="right clearfix">
+                                                <span class="chat-img pull-right">
+                                                    <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
+                                                </span>
+                                                <div class="chat-body clearfix">
+                                                    <div class="header">
+                                                        <strong class="pull-right primary-font">El chefcito (Servicio a clientes)</strong>
+                                                    </div>
+                                                    <p>
+                                                        @Html.DisplayFor(model => model.respuesta)
+                                                    </p>
+                                                </div>                                            
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <div class="input-group">
+                                            <div class="form-group">
+                                                <div class="col-md-10">
+                                                    @Html.EditorFor(model => model.respuesta, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.respuesta, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>  
+                                            <span class="input-group-btn">
+                                                <input type="submit" value="Responder" class="btn btn-warning btn-sm" />
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h3>Detalles de  la venta</h3>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Especificaciones:
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Fecha:
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Venta.fecha_venta)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Producto:
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Venta.Productos.nombre)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Cantidad:
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Venta.cantidad)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Precio de Venta:
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Venta.precio_venta)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Estado de la Venta:
+                                </td>
+                                <td>
+                                    <p class="alert">
+                                        Pagado
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+
+
+        </div>
+    </div>
+}
+
+<div>
+    <a class='btn btn-warning btn-xs' href="@Url.Action("Index")"><span class="glyphicon glyphicon-step-backward"></span>Volver a la lista</a>
+</div>

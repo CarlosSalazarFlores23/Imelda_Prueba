@@ -1,0 +1,76 @@
+﻿@model IEnumerable<TDV_Carlos.Models.Productos>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout Compras.cshtml";
+}
+
+<h2>Productos:</h2>
+
+<p>
+    @Html.ActionLink("Registrar Nuevo Producto", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Nombre:")
+        </th>
+        <th>
+            @Html.DisplayName("Descripción:")
+        </th>
+        <th>
+            @Html.DisplayName("Existencias:")
+        </th>
+        <th>
+            @Html.DisplayName("Precio de Compra:")
+        </th>
+        <th>
+            @Html.DisplayName("Precio de Venta: (Para el público)")
+        </th>
+        <th>
+            @Html.DisplayName("Stock:")
+        </th>
+        <th>
+            @Html.DisplayName("Subcategoria:")
+        </th>
+        <th>
+            @Html.DisplayName("Estado:")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.existencia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.precio_compra)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.precio_venta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.stock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subcategorias.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estatus)
+        </td>
+        <td>
+            @Html.ActionLink("Actualizar", "Edit", new { id=item.id_producto }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.id_producto }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.id_producto })
+        </td>
+    </tr>
+}
+
+</table>

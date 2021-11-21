@@ -1,0 +1,70 @@
+﻿@model IEnumerable<TDV_Carlos.Models.Paqueterias>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutEnvios.cshtml";
+}
+
+<h2>Paqueterias</h2>
+
+<p>
+    @Html.ActionLink("Registrar nueva empresa", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Nombre:")
+        </th>
+        <th>
+            @Html.DisplayName("Razón social:")
+        </th>
+        <th>
+            @Html.DisplayName("RFC:")
+        </th>
+        <th>
+            @Html.DisplayName("Pagina Web:")
+        </th>
+        <th>
+            @Html.DisplayName("Dirección:")
+        </th>
+        <th>
+            @Html.DisplayName("# de telefono:")
+        </th>
+        <th>
+            @Html.DisplayName("Estado:")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.razon_social)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rfc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pagina_web)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estatus)
+        </td>
+        <td>
+            @Html.ActionLink("Actualizar", "Edit", new { id=item.id_paqueteria }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.id_paqueteria }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.id_paqueteria })
+        </td>
+    </tr>
+}
+
+</table>

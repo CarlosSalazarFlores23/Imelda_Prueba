@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a10f1e209ab84d30aae1cc9467717051" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="Tienda_RestModel.Categorias" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tienda_RestModel.Clientes" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tienda_RestModel.Comentario" Width="1.5" PointX="12.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tienda_RestModel.dirEntrega" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tienda_RestModel.Fotos_productos" Width="1.5" PointX="7.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tienda_RestModel.orden" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tienda_RestModel.orden_producto" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tienda_RestModel.Paqueterias" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tienda_RestModel.Productos" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tienda_RestModel.Subcategorias" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tienda_RestModel.Usuarios" Width="1.5" PointX="8.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tienda_RestModel.Venta" Width="1.5" PointX="10.5" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="Tienda_RestModel.FK__Subcatego__id_ca__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="Tienda_RestModel.FK__dirEntreg__id_cl__02FC7413" ManuallyRouted="false" />
+        <AssociationConnector Association="Tienda_RestModel.FK__orden__id_client__160F4887" ManuallyRouted="false" />
+        <AssociationConnector Association="Tienda_RestModel.FK__Comentari__id_us__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="Tienda_RestModel.FK__Comentari__id_ve__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="Tienda_RestModel.FK__Fotos_pro__id_pr__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="Tienda_RestModel.FK__orden__id_paquet__17036CC0" ManuallyRouted="false" />
+        <AssociationConnector Association="Tienda_RestModel.FK__orden_pro__id_or__06CD04F7" ManuallyRouted="false" />
+        <AssociationConnector Association="Tienda_RestModel.FK__orden_pro__id_pr__778AC167" ManuallyRouted="false" />
+        <AssociationConnector Association="Tienda_RestModel.FK__Productos__id_su__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="Tienda_RestModel.FK__Venta__id_produc__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="Tienda_RestModel.FK__Venta__id_usuari__5DCAEF64" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

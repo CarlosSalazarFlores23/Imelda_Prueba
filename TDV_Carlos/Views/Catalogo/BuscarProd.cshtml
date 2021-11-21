@@ -1,0 +1,26 @@
+﻿@using TDV_Carlos.Models;
+@{
+    ViewBag.Title = "BuscarProd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Lista de productos con nombre:  @ViewBag.SearchKey</h3>
+<table cellpadding="2" cellspacing="2" border="1">
+    <tr>
+        <th>Nombre:</th>
+        <!--<th>Foto:</th>-->
+        <th>Precio:</th>
+        <th>Comprar:</th>
+    </tr>
+    @foreach (Productos producto in ViewBag.Listado)
+    {
+        <tr>
+            <td>@producto.nombre</td>
+            <td>@producto.precio_venta</td>
+            <td align="center">
+                <a href="@Url.Action("Agregar","Carro", new { id=producto.id_producto})">Comprar ahora</a>
+            </td>
+        </tr>
+    }
+</table>
+

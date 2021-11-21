@@ -1,0 +1,114 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<br />
+<div class="jumbotron">
+    <div class="container">
+        <h2>Herramientas y utensilios para restaurantes</h2>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img id="caru" src="https://cdn.shopify.com/s/files/1/0469/3193/articles/utensilios_restaurante_1_prueba_1024x1024.jpg?v=1569468691" alt="uten">
+                    <div class="desc">Equipa tu cocina con los mejores utensilios</div>
+                </div>
+
+                <div class="item">
+                    <img id="caru" src="https://horeca.expob2b.es/uploads/fotos_noticias/2020/07/22211-174774-los-hornos-mychef-covid-free-la-solucion-mas-segura-para-restaurantes-y-hoteles.jpg" alt="horno">
+                    <div class="desc">¿Lo prefieres horneado?</div>
+                </div>
+
+                <div class="item">
+                    <img id="caru" src="https://reimse.mx/wp-content/uploads/2020/07/cuadro-congeladores-industriales-2-e1594774955468.jpg" alt="refri">
+                    <div class="desc">Que nada se desperdicie!</div>
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="jumbotron">
+                <h2>
+                    Jueves 2x1!
+                </h2>
+                <img id="img" src="https://i.pinimg.com/originals/17/de/b3/17deb3e64243854bf8dd9fe5afebbfac.jpg" alt="helado">
+                <p>
+                    Como en las heladerias, todos los jueves tenemos al 2x1 todos los vasos y recipientes para helado.
+                </p>
+                <p>
+                    <a class="btn btn-primary btn-large" href="">Comprar</a>
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="jumbotron">
+                <h2>
+                    Al mayoreo!
+                </h2>
+                <img id="img" src="https://mayoreovape.com/wp-content/uploads/2020/06/MAYOREO-ICONOS.png" alt="mayoreo">
+                <p>
+                    Contamos con precios de mayoreo y contamos con diferentes ofertas segun tu volumen de compra.
+                </p>
+                <p>
+                    <a class="btn btn-primary btn-large" href="#">Comprar</a>
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="jumbotron">
+                <h2>
+                    Oferta del mes!
+                </h2>
+                <img id="img" src="data:image/jpeg;base64,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" alt="cuchilos">
+                <p>
+                    Todo este mes de octubre, los cuchillos  de todo tipo tienen un 15% de descuento.
+                </p>
+                <p>
+                    <a class="btn btn-primary btn-large" href="#">Comprar</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Elige cualquier método de pago</h2>
+        <img id="icos" src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/ecosystem/payment.svg" alt="pago">
+        <p>
+            Paga con tarjeta, débito o efectivo. También puedes pagar en hasta 12 mensualidades sin tarjeta.
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>Envío gratis en compra mínima de $ 500</h2>
+        <img id="icos" src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/ecosystem/shipping.svg" alt="envio">
+        <p>Con solo estar registrado tienes envíos gratis en millones de productos seleccionados de las mejores marcas.</p>
+
+    </div>
+    <div class="col-md-4">
+        <h2>Seguridad, de principio a fin</h2>
+        <img id="icos" src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/ecosystem/protected.svg" alt="seguridad">
+        <p>Contamos con los mejores proveedores y protegemos todas tus compras hasta que lleguen a ti.</p>
+    </div>
+</div>

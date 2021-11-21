@@ -1,0 +1,85 @@
+﻿@using TDV_Carlos.Models;
+@{
+    ViewBag.Title = "CrearOrden";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string c = Session["nom"].ToString();
+    string d = Session["dirCliente"].ToString();
+    string fo = Session["fechaOrden"].ToString();
+    string fe = Session["fPEntreg"].ToString();
+    int tTarj = Convert.ToInt32(Session["tTarjeta"].ToString());
+    string fig = "";
+    string nTarj = Session["nTarj"].ToString();
+    switch (tTarj)
+    {
+        case 1:
+            fig = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Former_Visa_%28company%29_logo.svg/288px-Former_Visa_%28company%29_logo.svg.png";
+            break;
+        case 2:
+            fig = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/2560px-MasterCard_Logo.svg.png";
+            break;
+        case 3:
+            fig = "https://media-artifacts.s3.us-west-2.amazonaws.com/crediverso-site/20210713164722/american-express-logo.png";
+            break;
+    }
+    }
+
+<h2>Su orden ha sido Completada!</h2>
+<div class="container">
+    <div class="col-md-6" style="background-color:beige">
+        <h4 class="bg-info">Cliente: @c</h4>
+        <h4 class="bg-info">Dirección de Entrega: @d</h4>
+        <h4 class="bg-info">Fecha de orden: @fo</h4>
+        <h4 class="bg-info">Fecha de entrega: @fe</h4>
+    </div>
+    <div class="col-md-8 bg-success">
+        <table class="table table-bordered table-responsive table-striped">
+            <thead>
+                <tr class="info">               
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            @foreach(Item item in (List < Item >) Session["cart"])
+            {
+            <tr>
+                <td>@item.Product.nombre</td>
+                <td>@item.Product.precio_venta</td>
+                <td>@item.Cantidad</td>
+                <td>@(item.Product.precio_venta * item.Cantidad)</td>
+            </tr>
+            }
+            <tr>
+                <td align="right" colspan="5">Total</td>
+                <td>
+                    @{ 
+                        List<Item> cart = (List<Item>)Session["cart"];
+                        var total = cart.Sum(item => item.Product.precio_venta * item.Cantidad);
+                    }
+                    @total
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="col-md-8">
+        <p>Elija su forma de pago haciendo clic en la imagen de su elección</p>
+        <div class="row">
+            <div class="col-md-3 col-md-offset-2">
+                <a href="@Url.Action("Pagar", "Pago", new { tipoPago="T"})" style="text-decoration:none">
+                    <img src=@fig class="img-responsive img-rounded" style="width:123px"/>
+                    @nTarj
+                </a>
+            </div>
+
+            <div class="col-md-3">
+                <a href="@Url.Action("Pagar", "Pago", new { tipoPago="P"})" style="text-decoration:none">
+                    <img src="https://www.actualidadecommerce.com/wp-content/uploads/2020/10/paypal.png" class="img-responsive img-rounded" style="width:123px"/>
+                    Paypal
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,67 @@
+﻿@model TDV_Carlos.Models.Usuarios
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout Admin.cshtml";
+}
+<br/>
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h2>Detalles</h2>
+        <h4>Empleado:</h4>
+    </div>
+    <div class="panel-body">
+        <div class="row col-md-12 ">
+            <table class="table table-striped custab">
+                <thead>
+                    <tr>
+                        <th>
+                            Nombre:
+                        </th>
+                        <th>
+                            Apellidos:
+                        </th>
+                        <th>
+                            Correo Electrónico:
+                        </th>
+                        <th>
+                            Telefono:
+                        </th>
+                        <th>
+                            Puesto:
+                        </th>
+                        <th>
+                            Estado:
+                        </th>
+                    </tr>
+                </thead>
+                <tr class="success">
+                    <td>
+                        @Html.DisplayFor(model => model.nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.telefono)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.rol)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.estatus)
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a class='btn btn-info btn-xs' href="@Url.Action( "Edit", new { id = Model.id_usuario })"><span class="glyphicon glyphicon-edit"></span> Modificar</a>
+    <a class='btn btn-warning btn-xs' href="@Url.Action("Index")"><span class="glyphicon glyphicon-step-backward"></span>Volver a la lista</a>
+</div>
+

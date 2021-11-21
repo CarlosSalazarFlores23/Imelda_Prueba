@@ -1,0 +1,116 @@
+﻿@model TDV_Carlos.Models.orden
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutEnvios.cshtml";
+}
+
+@{ string val;
+    if (Model.fecha_envio.HasValue)
+    {
+        val = Model.fecha_envio.GetValueOrDefault().ToShortDateString();
+    }
+    else
+    {
+        val = "";
+    }
+}
+
+<h2>Actualiza fecha de entrega:</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Actualizar fecha de entrega:</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id_orden)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fecha_creacion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">                
+                @Html.TextBoxFor(model => model.fecha_creacion, new { @class="form-control", @Value=Model.fecha_creacion.ToShortDateString(), @readonly="readonly" })
+                @Html.ValidationMessageFor(model => model.fecha_creacion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.num_confirmacion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.num_confirmacion, new { @class = "form-control", @Value = Model.num_confirmacion, @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.num_confirmacion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.total, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.total, new { @class = "form-control", @Value = Model.total, @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.total, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Clientes.nombre, "nombre del cliente:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Clientes.nombre, new { @class = "form-control", @Value = Model.Clientes.nombre, @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.id_cliente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Dirección de entrega", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="form-control">
+                    @Html.DisplayFor(model => model.Clientes.calle_t),
+                    @Html.DisplayFor(model => model.Clientes.colonia_t),
+                    @Html.DisplayFor(model => model.Clientes.estado_t)
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Paqueterias.nombre, "nombre de la paqueteria:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Paqueterias.nombre, new { @class = "form-control", @Value = Model.Paqueterias.nombre, @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.id_paqueteria, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.num_guia, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.num_guia, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.num_guia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fecha_envio, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.fecha_envio, new { @class = "form-control", @Value = @val, @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.fecha_envio, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fecha_entrega, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.fecha_entrega, new {@type="date", @class = "form-control datepicker" })
+                @Html.ValidationMessageFor(model => model.fecha_entrega, "", new { @class = "text-danger" })
+            </div>
+        </div>     
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

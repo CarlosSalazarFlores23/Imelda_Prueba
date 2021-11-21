@@ -1,0 +1,34 @@
+﻿@using TDV_Carlos.Models;
+@{
+    ViewBag.Title = "prodCategoria";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Catego</h2>
+
+<div class="container">
+    <div class="col-xs-12 col-md-9">
+        <div class="row">
+            @foreach (Productos item in ViewBag.productos)
+            {
+                <div class="col-xs-12 col-md-3"> 
+                    <div class="thumbnail">
+                        <!--Aqui va la imagen-->
+                        <div class="caption text-center">
+                            <p>
+                                <b>Nombre: </b>  <span>@item.nombre</span>
+                            </p>
+                            <p>
+                                <b>Precio: </b>  <span>@item.precio_venta</span>
+                            </p>
+                            <p class="text-center">
+                                @Html.ActionLink("Añadir al carrrito", "Agregar", "Carro", new {id= item.id_producto }, new { @class = "btn btn-info" })
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
