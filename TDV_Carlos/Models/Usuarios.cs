@@ -11,7 +11,8 @@ namespace TDV_Carlos.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Usuarios
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,11 +23,32 @@ namespace TDV_Carlos.Models
         }
     
         public int id_usuario { get; set; }
+
+        [StringLength(60, MinimumLength = 3)]
+        [Required(ErrorMessage = "El nombre debe tener entre 3 y 60 caracteres")]
+        [Display(Name = "Nombre del Usuario")]
         public string nombre { get; set; }
+
+        [StringLength(80, MinimumLength = 3)]
+        [Required(ErrorMessage = "Los apellidos deben tener entre 3 y 80 caracteres")]
+        [Display(Name = "Apellidos del Usuario")]   
         public string apellidos { get; set; }
+
+        [Required(ErrorMessage = "Ingrese el correo institucional del Usuario")]
+        [Display(Name = "email del Usuario")]
+        [RegularExpression(@"^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$",
+        ErrorMessage = "Ingrese una dirección de correo válida")]
         public string email { get; set; }
+
+        [StringLength(10, MinimumLength = 10)]
+        [Required(ErrorMessage = "El número de telefono debe estar en formato de 10 digitos")]
+        [Display(Name = "Telefono del Usuario")]
+        [RegularExpression(@"^\d+$",
+        ErrorMessage = "Ingrese un número de telefono válido")]
         public string telefono { get; set; }
+    
         public string rol { get; set; }
+
         public int estatus { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

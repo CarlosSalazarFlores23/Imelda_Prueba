@@ -89,7 +89,8 @@ namespace TDV_Carlos.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(comentario).State = EntityState.Modified;
+                comentario.estatus = 1;
+                db.Entry(comentario).State = EntityState.Modified;                
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

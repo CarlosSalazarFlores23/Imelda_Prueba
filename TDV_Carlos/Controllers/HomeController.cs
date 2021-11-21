@@ -16,6 +16,8 @@ namespace TDV_Carlos.Controllers
 
             //Esto lo puse con en el segundo commit
 
+            //Esos imbeciles
+
             //return RedirectToAction("Index","Envios");
             //return RedirectToAction("Index", "Pruebas");            
             if (Session["itemTotal"]==null)

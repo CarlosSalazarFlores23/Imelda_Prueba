@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_Layout Admin.cshtml";
+    string estado = Model.estatus==1 ? "Activo": "Inactivo";
 }
 
 <br/>
@@ -38,26 +39,35 @@
                         </th>
                     </tr>
                 </thead>
-                    <tr class="danger">
+                <tr class="danger">
+                    <td>
+                        @Html.DisplayFor(model => model.nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.telefono)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.rol)
+                    </td>
+                    @if (estado=="Activo")
+                    {
                         <td>
-                            @Html.DisplayFor(model => model.nombre)
+                            Activo
                         </td>
+                    }
+                    else
+                    {
                         <td>
-                            @Html.DisplayFor(model => model.apellidos)
+                            Inactivo
                         </td>
-                        <td>
-                            @Html.DisplayFor(model => model.email)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.telefono)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.rol)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.estatus)
-                        </td>
-                    </tr>
+                    }
+                </tr>
             </table>
         </div>
     </div>

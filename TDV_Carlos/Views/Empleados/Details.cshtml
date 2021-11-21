@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout Admin.cshtml";
+    string estado = Model.estatus == 1 ? "Activo" : "Inactivo";
 }
 <br/>
 <div class="panel panel-success">
@@ -51,9 +52,18 @@
                     <td>
                         @Html.DisplayFor(model => model.rol)
                     </td>
-                    <td>
-                        @Html.DisplayFor(model => model.estatus)
-                    </td>
+                    @if (estado == "Activo")
+                    {
+                        <td>
+                            Activo
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            Inactivo
+                        </td>
+                    }
                 </tr>
             </table>
         </div>

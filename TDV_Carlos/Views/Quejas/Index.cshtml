@@ -37,24 +37,33 @@
                 </thead>
                 @foreach (var item in Model)
                 {
-                    <tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.titulo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Usuarios.nombre) @Html.DisplayFor(modelItem => item.Usuarios.apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fecha.Day)/@Html.DisplayFor(modelItem => item.fecha.Month)/@Html.DisplayFor(modelItem => item.fecha.Year)
+                    </td>
+                    @if (item.estatus == 1)
+                    {
                         <td>
-                            @Html.DisplayFor(modelItem => item.titulo)
+                            Respuesta Enviada
                         </td>
+                    }
+                    else
+                    {
                         <td>
-                            @Html.DisplayFor(modelItem => item.Usuarios.nombre) @Html.DisplayFor(modelItem => item.Usuarios.apellidos)
+                            Sin Responder
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.fecha.Day)/@Html.DisplayFor(modelItem => item.fecha.Month)/@Html.DisplayFor(modelItem => item.fecha.Year)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.estatus)
-                        </td>
-                        <td class="text-center">
-                            <a class='btn btn-success btn-xs' href="@Url.Action( "Details", new { id = item.id_cometario })"><span class="glyphicon glyphicon-eye-close"></span>Detalles</a>
-                            <a class='btn btn-info btn-xs' href="@Url.Action( "Edit", new { id = item.id_cometario })"><span class="glyphicon glyphicon-edit"></span> Responder</a>                            
-                        </td>
-                    </tr>
+                    }
+                    <td class="text-center">
+                        <a class='btn btn-success btn-xs' href="@Url.Action( "Details", new { id = item.id_cometario })"><span class="glyphicon glyphicon-eye-close"></span>Detalles</a>
+                        <a class='btn btn-info btn-xs' href="@Url.Action( "Edit", new { id = item.id_cometario })"><span class="glyphicon glyphicon-edit"></span> Responder</a>
+                    </td>
+                </tr>
                 }
             </table>
         </div>
