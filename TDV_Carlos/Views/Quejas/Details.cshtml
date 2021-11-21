@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_LayoutChat.cshtml";
+    string estado = Model.estatus == 1 ? "Respuesta Enviada": "Sin Responder" ;
 }
 <br />
 <br />
@@ -52,9 +53,17 @@
                     <td>
                         @Html.DisplayFor(model => model.id_venta)
                     </td>
-                    <td>
-                        @Html.DisplayFor(model => model.estatus)
-                    </td>
+                    @if (/*estado == " Sin Responder"*/ Model.estatus==0)
+                    {
+                        <td>
+                            Sin Responder
+                        </td>
+                    }
+                    else {
+                        <td>
+                            Respuesta Enviada
+                        </td>
+                    }                    
                 </tr>
             </table>
         </div>
