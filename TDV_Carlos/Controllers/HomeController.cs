@@ -10,6 +10,12 @@ namespace TDV_Carlos.Controllers
     {
         public ActionResult Index()
         {
+            
+            //Esto lo puse desde la rama "Carlos"
+            //Si funciona        
+
+            //Esto lo puse con en el segundo commit
+
             //return RedirectToAction("Index","Envios");
             //return RedirectToAction("Index", "Pruebas");            
             if (Session["itemTotal"]==null)
