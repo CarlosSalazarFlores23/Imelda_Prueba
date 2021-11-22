@@ -10,6 +10,7 @@ using TDV_Carlos.Models;
 
 namespace TDV_Carlos.Controllers
 {
+    [Authorize]
     public class QuejasController : Controller
     {
         private Tienda_RestEntities db = new Tienda_RestEntities();
@@ -17,8 +18,32 @@ namespace TDV_Carlos.Controllers
         // GET: Quejas
         public ActionResult Index()
         {
-            var comentario = db.Comentario.Include(c => c.Usuarios).Include(c => c.Venta);
-            return View(comentario.ToList());
+            Tienda_RestEntities bd = new Tienda_RestEntities();
+            string correo = "";
+            if (User.Identity.IsAuthenticated)
+            {
+                correo = User.Identity.Name;
+                string rol = "";
+
+                var query = from st in bd.Usuarios
+                            where st.email == correo
+                            select st;
+                var lista = query.ToList();
+                if (lista.Count > 0)
+                {
+                    rol = lista.FirstOrDefault().rol;
+                }
+                if (rol == "Chateador")
+                {
+                    var comentario = db.Comentario.Include(c => c.Usuarios).Include(c => c.Venta);
+                    return View(comentario.ToList());
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Usuario", routeValues: new { email = correo });
+                }
+            }
+            return RedirectToAction("Index", "Usuario", routeValues: new { email = correo });
         }
 
         // GET: Quejas/Details/5
@@ -39,9 +64,33 @@ namespace TDV_Carlos.Controllers
         // GET: Quejas/Create
         public ActionResult Create()
         {
-            ViewBag.id_usuario = new SelectList(db.Usuarios, "id_usuario", "nombre");
-            ViewBag.id_venta = new SelectList(db.Venta, "id_venta", "id_venta");
-            return View();
+            Tienda_RestEntities bd = new Tienda_RestEntities();
+            string correo = "";
+            if (User.Identity.IsAuthenticated)
+            {
+                correo = User.Identity.Name;
+                string rol = "";
+
+                var query = from st in bd.Usuarios
+                            where st.email == correo
+                            select st;
+                var lista = query.ToList();
+                if (lista.Count > 0)
+                {
+                    rol = lista.FirstOrDefault().rol;
+                }
+                if (rol == "Chateador")
+                {
+                    ViewBag.id_usuario = new SelectList(db.Usuarios, "id_usuario", "nombre");
+                    ViewBag.id_venta = new SelectList(db.Venta, "id_venta", "id_venta");
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Usuario", routeValues: new { email = correo });
+                }
+            }
+            return RedirectToAction("Index", "Usuario", routeValues: new { email = correo });            
         }
 
         // POST: Quejas/Create

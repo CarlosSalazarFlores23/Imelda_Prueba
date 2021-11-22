@@ -65,8 +65,8 @@
                                                 <div class="chat-body clearfix">
                                                     <div class="header">
                                                         <strong class="primary-font">@Html.DisplayFor(model => model.Venta.Usuarios.nombre)  @Html.DisplayFor(model => model.Venta.Usuarios.apellidos)</strong> <small class="pull-right text-muted">
-                                                        <span class="glyphicon glyphicon-time"></span> @Html.DisplayFor(model => model.fecha)
-                                                        </small>
+    <span class="glyphicon glyphicon-time"></span> @Html.DisplayFor(model => model.fecha.Day)/@Html.DisplayFor(model => model.fecha.Month)/@Html.DisplayFor(model => model.fecha.Year)
+</small>
                                                     </div>
                                                     <p>
                                                         @Html.DisplayFor(model => model.descripcion)
@@ -97,7 +97,7 @@
                                                 </div>
                                             </div>  
                                             <span class="input-group-btn">
-                                                <input type="submit" value="Responder" class="btn btn-warning btn-sm" />
+                                                <input type="submit" value="Responder" class="btn btn-success btn-sm" />
                                             </span>
                                         </div>
                                     </div>
@@ -122,7 +122,7 @@
                                     Fecha:
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(model => model.Venta.fecha_venta)
+                                    @Html.DisplayFor(model => model.Venta.fecha_venta.Day)/@Html.DisplayFor(model => model.Venta.fecha_venta.Month)/@Html.DisplayFor(model => model.Venta.fecha_venta.Year)
                                 </td>
                             </tr>
                             <tr>

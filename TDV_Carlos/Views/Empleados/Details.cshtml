@@ -29,7 +29,7 @@
                             Telefono:
                         </th>
                         <th>
-                            Puesto:
+                            Rol:
                         </th>
                         <th>
                             Estado:
@@ -49,9 +49,18 @@
                     <td>
                         @Html.DisplayFor(model => model.telefono)
                     </td>
-                    <td>
-                        @Html.DisplayFor(model => model.rol)
-                    </td>
+                    @if (Model.rol == "Chateador")
+                    {
+                        <td>
+                            Encargado de Quejas
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            @Html.DisplayFor(model => model.rol)
+                        </td>
+                    }
                     @if (estado == "Activo")
                     {
                         <td>

@@ -10,6 +10,7 @@ using TDV_Carlos.Models;
 
 namespace TDV_Carlos.Controllers
 {
+    [Authorize]
     public class EmpleadosController : Controller
     {
         private Tienda_RestEntities db = new Tienda_RestEntities();
@@ -17,7 +18,31 @@ namespace TDV_Carlos.Controllers
         // GET: Empleados
         public ActionResult Index()
         {
-            return View(db.Usuarios.ToList());
+            Tienda_RestEntities bd = new Tienda_RestEntities();
+            string correo = "";
+            if (User.Identity.IsAuthenticated)
+            {
+                correo = User.Identity.Name;
+                string rol = "";
+
+                var query = from st in bd.Usuarios
+                            where st.email == correo
+                            select st;
+                var lista = query.ToList();
+                if (lista.Count > 0)
+                {
+                    rol = lista.FirstOrDefault().rol;
+                }
+                if (rol == "Admin")
+                {
+                    return View(db.Usuarios.ToList());
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Usuario", routeValues: new { email = correo });
+                }
+            }
+            return RedirectToAction("Index", "Usuario", routeValues: new { email = correo });            
         }
 
         // GET: Empleados/Details/5
@@ -38,7 +63,31 @@ namespace TDV_Carlos.Controllers
         // GET: Empleados/Create
         public ActionResult Create()
         {
-            return View();
+            Tienda_RestEntities bd = new Tienda_RestEntities();
+            string correo = "";
+            if (User.Identity.IsAuthenticated)
+            {
+                correo = User.Identity.Name;
+                string rol = "";
+
+                var query = from st in bd.Usuarios
+                            where st.email == correo
+                            select st;
+                var lista = query.ToList();
+                if (lista.Count > 0)
+                {
+                    rol = lista.FirstOrDefault().rol;
+                }
+                if (rol == "Admin")
+                {
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Usuario", routeValues: new { email = correo });
+                }
+            }
+            return RedirectToAction("Index", "Usuario", routeValues: new { email = correo });           
         }
 
         // POST: Empleados/Create
