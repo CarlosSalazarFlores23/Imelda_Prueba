@@ -45,7 +45,7 @@
                         @Html.DisplayFor(model => model.descripcion)
                     </td>
                     <td>
-                        @Html.DisplayFor(model => model.fecha)
+                        @Html.DisplayFor(model => model.fecha.Day)/@Html.DisplayFor(model => model.fecha.Month)/@Html.DisplayFor(model => model.fecha.Year)
                     </td>
                     <td>
                         @Html.DisplayFor(model => model.Usuarios.nombre) @Html.DisplayFor(model => model.Usuarios.apellidos)
@@ -85,7 +85,7 @@
                                 Fecha:
                             </td>
                             <td>
-                                @Html.DisplayFor(model => model.Venta.fecha_venta)
+                                @Html.DisplayFor(model => model.Venta.fecha_venta.Day)/@Html.DisplayFor(model => model.Venta.fecha_venta.Month)/@Html.DisplayFor(model => model.Venta.fecha_venta.Year)
                             </td>
                         </tr>
                         <tr>

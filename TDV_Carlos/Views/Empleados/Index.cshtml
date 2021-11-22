@@ -46,40 +46,49 @@
                 {
                     if (item.rol!="Cliente")
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.nombre)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.apellidos)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.email)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.telefono)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.rol)
-                            </td>
-                            @if (item.estatus == 1)
-                            {
-                                <td>
-                                    Activo
-                                </td>
-                            }
-                            else
-                            {
-                                <td>
-                                    Inactivo
-                                </td>
-                            }
-                            <td class="text-center">
-                                <a class='btn btn-success btn-xs' href="@Url.Action( "Details", new { id = item.id_usuario })"><span class="glyphicon glyphicon-eye-close"></span>Detalles</a>
-                                <a class='btn btn-info btn-xs' href="@Url.Action( "Edit", new { id = item.id_usuario })"><span class="glyphicon glyphicon-edit"></span> Actualizar</a>
-                                <a class="btn btn-danger btn-xs" href="@Url.Action("Delete", new { id = item.id_usuario })"><span class="glyphicon glyphicon-remove"></span> Eliminar</a>
-                            </td>
-                        </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.telefono)
+                    </td>
+                    @if (item.rol == "Chateador")
+                    {
+                        <td>
+                            Encargado de Quejas
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.rol)
+                        </td>
+                    }                    
+                    @if (item.estatus == 1)
+                    {
+                        <td>
+                            Activo
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            Inactivo
+                        </td>
+                    }
+                    <td class="text-center">
+                        <a class='btn btn-success btn-xs' href="@Url.Action( "Details", new { id = item.id_usuario })"><span class="glyphicon glyphicon-eye-close"></span>Detalles</a>
+                        <a class='btn btn-info btn-xs' href="@Url.Action( "Edit", new { id = item.id_usuario })"><span class="glyphicon glyphicon-edit"></span> Actualizar</a>
+                        <a class="btn btn-danger btn-xs" href="@Url.Action("Delete", new { id = item.id_usuario })"><span class="glyphicon glyphicon-remove"></span> Eliminar</a>
+                    </td>
+                </tr>
                     }
                 }
             </table>
